@@ -1,0 +1,96 @@
+/**
+  * @package LB Mixins
+  * 
+  * Author: Luigi Briganti
+  * Author URI: http://www.linebreak.it
+  *
+  * A collection of useful mixins for sass projects. 
+  */
+
+@mixin transition($property){
+  transition: $property;
+  -webkit-transition: $property;
+  -moz-transition: $property;
+}
+
+@mixin margin_reset($property){
+  margin: $property;
+}
+
+@mixin reset_position($property){
+  top: $property;
+  right: $property;
+  bottom: $property;
+  left: $property;
+}
+
+@mixin flex_standard{
+  display:flex;
+  justify-content: space-between;
+  flex-flow: row nowrap;
+}
+
+@mixin border_radius($property){
+  border-radius: $property;
+  -webkit-border-radius: $property;
+  -moz-border-radius: $property;
+}
+
+@mixin anchor_after($property, $height){
+  position:relative;
+  &::after{
+    content: '';
+    position:absolute;
+    width: 0%;
+    height: $height;
+    background-color: $property;
+    bottom:-4px;
+    left:0;
+    z-index: 2;
+    @include transition(.4s ease);
+  }
+
+  &:hover{
+    text-decoration: none;
+    color: $property;
+    &::after{
+      width: 100%;
+    }
+  }
+}
+
+@mixin transform($property){
+  transform: $property;
+  -moz-transform: $property;
+  -webkit-transform: $property;
+}
+
+@mixin reset_pseudos{
+  &::before, &::after{
+    display: none!important;
+  }
+}
+
+@mixin boxshadow($property){
+  -webkit-box-shadow: $property;//0px 0px 10px 2px rgba(0,0,0,0.3);
+  -moz-box-shadow: $property;//0px 0px 10px 2px rgba(0,0,0,0.3);
+  box-shadow: $property;//0px 0px 10px 2px rgba(0,0,0,0.3);
+}
+
+@mixin columns($cols, $width, $gap){
+  columns: $cols;
+  column-width: $width;
+  column-gap: $gap;
+  -moz-columns: $cols;
+  -moz-column-width: $width;
+  -moz-column-gap: $gap;
+  -webkit-columns: $cols;
+  -webkit-column-width: $width;
+  -webkit-column-gap: $gap;
+}
+
+@mixin filter($property){
+  filter: $property;
+  -webkit-filter: $property;
+  -moz-filter: $property;
+}
